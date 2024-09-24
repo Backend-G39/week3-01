@@ -4,6 +4,6 @@ const routerCountry = require('./country.router');
 const router = express.Router();
 
 // colocar las rutas aquí
-router.use('/authors', routerAuthor)
+router.use('/authores', routerAuthor)
 router.use('/countries', routerCountry)
 module.exports = router;
