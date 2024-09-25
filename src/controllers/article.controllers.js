@@ -1,8 +1,9 @@
 const catchError = require('../utils/catchError');
 const Article = require('../models/Article');
+const Author = require('../models/Author');
 
 const getAll = catchError(async (req, res) => {
-  const results = await Article.findAll();
+  const results = await Article.findAll({ include: Author });
   return res.json(results);
 });
 
@@ -13,7 +14,7 @@ const create = catchError(async (req, res) => {
 
 const getOne = catchError(async (req, res) => {
   const { id } = req.params;
-  const result = await Article.findByPk(id);
+  const result = await Article.findByPk(id, { include: Author });
   if (!result) return res.sendStatus(404);
   return res.json(result);
 });
